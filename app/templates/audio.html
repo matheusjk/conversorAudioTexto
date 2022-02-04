@@ -1,0 +1,46 @@
+{% from 'base.html' import mostraAlerta %}
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="jumbotron p-3">
+                <h2>Audio Conversor Texto</h2>
+            </div>
+
+            {{ mostraAlerta() }}
+            <div class="mb-3">
+                <form action="{{ url_for('audio.index') }}" method="POST" enctype=multipart/form-data>
+                    <label for="formFile" class="form-label">Audio</label>
+                    <div class="input-group">
+                        
+                        <input class="form-control" type="file" id="formFile" name="file" aria-label="Upload">
+                        <input class="btn btn-outline-primary" type="submit" value="UPLOAD">
+                    </div>
+                    <!-- <div class="col-auto">
+                        <input class="btn btn-outline-primary" type="submit" value="UPLOAD">
+                    </div> -->
+                </form>
+                
+            </div>
+
+            <div class="mb-3" id="resultado">
+                {{ convertido }}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block footer %}
+
+    <footer class="footer mt-auto">
+        <div class="container">
+            <p class="mt-5 mb-3 text-muted text-center">Todos os direitos reservados. &copy; 2022</p>
+          </div>
+    </footer>
+
+{% endblock %}
